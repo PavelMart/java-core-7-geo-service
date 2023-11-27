@@ -30,9 +30,9 @@ class MessageSenderImplTest {
         when(geoService.byIp(anyString()))
                 .thenReturn(location);
 
-        var localizationService = spy(LocalizationServiceImpl.class);
+        var localizationService = new LocalizationServiceImpl();
 
-        Map<String, String> headers = new HashMap<String, String>();
+        Map<String, String> headers = new HashMap<>();
         headers.put(MessageSenderImpl.IP_ADDRESS_HEADER, ip);
 
         MessageSender messageSender = new MessageSenderImpl(geoService, localizationService);
